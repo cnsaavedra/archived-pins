@@ -51,8 +51,8 @@ async def on_message(message):
                 if pin.attachments:
                     for attachment in pin.attachments:
                         await archived_pins_channel.send(pin.content + '\n' + attachment.url)
-        else:
-            await archived_pins_channel.send(pin.content)
+                if pin.content:
+                    await archived_pins_channel.send(pin.content)
 
         await message.channel.send(f'The pins from "{channel_name}" have been archived to "{archived_pins_channel_name}".')
 
