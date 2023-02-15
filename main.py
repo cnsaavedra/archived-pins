@@ -33,14 +33,14 @@ async def on_message(message):
             return
 
         # Create the new archived_pins channel
-        archived_pins_channel_name = f'archived_pins_{channel_name}'
+        archived_pins_channel_name = f'archived-pins-{channel_name}'
         i = 1
         while True:
             archived_pins_channel = discord.utils.get(
                 message.guild.channels, name=archived_pins_channel_name)
             if not archived_pins_channel:
                 break
-            archived_pins_channel_name = f'archived_pins_{channel_name} ({i})'
+            archived_pins_channel_name = f'archived-pins-{channel_name} ({i})'
             i += 1
         archived_pins_channel = await message.guild.create_text_channel(archived_pins_channel_name)
 
