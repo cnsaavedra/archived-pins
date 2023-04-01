@@ -4,7 +4,8 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # creation of discord client to access the bot through typing
-client = discord.Client()
+intents = discord.Intents.all()
+client = discord.Client(intents=intents)
 
 
 # client.events are for reading inputs from user in discord, and for bot to return a msg
@@ -16,10 +17,10 @@ async def on_ready():
 @client.event
 async def on_message(message):
     if message.content.startswith('!create_archived_pins'):
-        # Check if the author has the necessary permissions to perform the action
-        if not message.author.permissions_in(message.channel).manage_channels:
-            await message.channel.send('You do not have the necessary permissions to perform this action.')
-            return
+        # # Check if the author has the necessary permissions to perform the action
+        # if not message.author.permissions_in(message.channel).manage_channels:
+        #     await message.channel.send('You do not have the necessary permissions to perform this action.')
+        #     return
 
         # Ask the user to select/type an existing channel name
         await message.channel.send('Please type the name of the channel you want to archive pins from:')
